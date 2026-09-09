@@ -71,9 +71,13 @@ Verificação feita: o PDF gerado pelo script tem as mesmas 6 páginas e o mesmo
 - Não há testes automatizados. O primeiro que eu escreveria: `ler_markdown` devolve 7 seções e 11 referências para o documento atual.
 - A capa fica em constantes no script. Se houver um segundo relatório, faz sentido mover esses dados para o próprio Markdown (front matter).
 
-## Por que isso importa pra mim
+## O que esse caso muda no meu trabalho
 
-Trabalho com IA aplicada a recrutamento, onde algoritmos também influenciam decisões sobre pessoas. A regra que sigo na prática, nenhuma decisão sobre gente sem revisão humana, é exatamente a que faltou nesse caso.
+Trabalho com automação e IA em uma consultoria de recrutamento. É um contexto diferente da segurança pública, mas parecido no que importa: um sistema opaco pontua pessoas, o erro não se distribui igual entre os grupos e quem opera tende a aceitar a resposta da máquina. Três coisas do caso viraram critério pra mim:
+
+- **Nenhuma decisão sobre uma pessoa sai só do sistema.** Score, ranking ou match é entrada para revisão humana, nunca a decisão em si. Foi exatamente essa etapa que faltou em Detroit.
+- **Medir o erro por grupo, não só a média.** Um modelo "bom em geral" pode ser ruim justamente com quem tem menos margem para absorver o erro. A média esconde isso; o NIST só enxergou o problema porque separou os resultados.
+- **Quem foi avaliado precisa poder saber e contestar.** Se não consigo explicar por que o sistema descartou alguém, o sistema não está pronto para descartar ninguém.
 
 ## Licença
 
