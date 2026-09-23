@@ -34,6 +34,8 @@ A pergunta que orienta o texto não é "a tecnologia funciona?", e sim "em que c
 ├── src/
 │   └── gerar_relatorio.py                                 Markdown → PDF (ReportLab)
 ├── assets/fonts/                                          fontes embutidas no PDF + LICENCAS.md
+├── tests/
+│   └── test_ler_markdown.py                               testes do parser (unittest)
 ├── requirements.txt
 ├── LICENSE
 └── .gitignore
@@ -49,6 +51,14 @@ python src/gerar_relatorio.py
 ```
 
 Opções: `--entrada` (outro Markdown) e `--saida` (outro caminho de PDF). Os dados da capa (instituição, curso, autora, título) ficam no dicionário `CAPA`, no topo do script.
+
+### Rodar os testes
+
+```bash
+python -m unittest discover tests
+```
+
+São sete testes, só com a biblioteca padrão. Três conferem o documento real (7 seções, a última é "Referências" com 11 itens, seções numeradas de 1 a 6 na ordem). Quatro conferem as regras do parser num arquivo pequeno criado na hora: título e metadados ficam fora do corpo, item de lista perde o hífen, texto antes da primeira seção é ignorado, linha vazia não vira bloco.
 
 ### O que o script faz
 
@@ -68,7 +78,7 @@ Verificação feita: o PDF gerado pelo script tem as mesmas 6 páginas e o mesmo
 ## Limitações e próximos passos
 
 - O parser não entende negrito, links nem listas aninhadas. Se o texto precisar disso, o caminho é trocar por uma biblioteca de Markdown (por exemplo, `markdown-it-py`) e mapear os tokens para os estilos do ReportLab.
-- Não há testes automatizados. O primeiro que eu escreveria: `ler_markdown` devolve 7 seções e 11 referências para o documento atual.
+- Os testes cobrem só o parser. O que falta testar é a saída: por exemplo, gerar o PDF num diretório temporário e conferir que ele tem 6 páginas com `pypdf`, que é a verificação que hoje faço à mão.
 - A capa fica em constantes no script. Se houver um segundo relatório, faz sentido mover esses dados para o próprio Markdown (front matter).
 
 ## O que esse caso muda no meu trabalho
